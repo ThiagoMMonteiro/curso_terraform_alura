@@ -20,5 +20,23 @@ resource "aws_instance" "cursos-dev" {
     tags = {
         Name = "cursos-dev${count.index}"
     }
+    vpc_security_group_ids = ["sg-03a9693a69e5a06ba"]
 }
 
+resource "aws_security_group" "ssh-access" {
+  name        = "ssh-access"
+  description = "Allow ssh access"
+
+  ingress {
+    description      = "SSH from VPC"
+    from_port        = 22
+    to_port          = 22
+    protocol         = "tcp"
+    cidr_blocks      = ["177.127.69.87/32"]
+    # ipv6_cidr_blocks = [aws_vpc.main.ipv6_cidr_block]
+  }
+
+  tags = {
+    Name = "ssh"
+  }
+}
