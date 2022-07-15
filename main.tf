@@ -19,27 +19,27 @@ provider "aws" {
 }
 
 resource "aws_instance" "dev1" {
-    ami = "ami-08ae71fd7f1449df1"
+    ami = var.amis["sa-east-1"]
     instance_type = "t2.micro"
-    key_name = "tmonteiro-aws"
+    key_name = var.key_name
     tags = {
         Name = "dev1"
     }
     vpc_security_group_ids = ["sg-4774aa0f"]
 }
 resource "aws_instance" "dev2" {
-    ami = "ami-08ae71fd7f1449df1"
+    ami = var.amis["sa-east-1"]
     instance_type = "t2.micro"
-    key_name = "tmonteiro-aws"
+    key_name = var.key_name
     tags = {
         Name = "dev2"
     }
     vpc_security_group_ids = ["sg-4774aa0f"]
 }
 resource "aws_instance" "dev3" {
-    ami = "ami-08ae71fd7f1449df1"
+    ami = var.amis["sa-east-1"]
     instance_type = "t2.micro"
-    key_name = "tmonteiro-aws"
+    key_name = var.key_name
     tags = {
         Name = "dev3"
     }
@@ -47,9 +47,9 @@ resource "aws_instance" "dev3" {
 }
 
 resource "aws_instance" "dev4" {
-    ami = "ami-08ae71fd7f1449df1"
+    ami = var.amis["sa-east-1"]
     instance_type = "t2.micro"
-    key_name = "tmonteiro-aws"
+    key_name = var.key_name
     tags = {
         Name = "dev4"
     }
@@ -58,9 +58,9 @@ resource "aws_instance" "dev4" {
 }
 
 resource "aws_instance" "dev5" {
-    ami = "ami-08ae71fd7f1449df1"
+    ami = var.amis["sa-east-1"]
     instance_type = "t2.micro"
-    key_name = "tmonteiro-aws"
+    key_name = var.key_name
     tags = {
         Name = "dev5"
     }
@@ -69,13 +69,13 @@ resource "aws_instance" "dev5" {
 
 resource "aws_instance" "dev6" {
   provider = aws.us-east-1
-    ami = "ami-052efd3df9dad4825"
+    ami = var.amis["us-east-1"]
     instance_type = "t2.micro"
-    key_name = "tmonteiro-aws"
+    key_name = var.key_name
     tags = {
         Name = "dev6"
     }
-    vpc_security_group_ids = ["sg-0924cf73e48787904"]
+    vpc_security_group_ids = ["sg-08c72dc065a1bf32e"]
     depends_on = [aws_dynamodb_table.dynamo-db-thiago]
 }
 

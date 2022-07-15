@@ -7,7 +7,7 @@ resource "aws_security_group" "ssh-access" {
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks      = ["200.225.113.209/32"]
+    cidr_blocks      = var.cdir_remote_access
   }
 
   tags = {
