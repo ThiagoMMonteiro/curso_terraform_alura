@@ -46,16 +46,16 @@ resource "aws_instance" "dev3" {
     vpc_security_group_ids = ["sg-4774aa0f"]
 }
 
-resource "aws_instance" "dev4" {
-    ami = var.amis["sa-east-1"]
-    instance_type = "t2.micro"
-    key_name = var.key_name
-    tags = {
-        Name = "dev4"
-    }
-    vpc_security_group_ids = ["sg-4774aa0f"]
-    depends_on = [aws_s3_bucket.dev4]
-}
+# resource "aws_instance" "dev4" {
+#     ami = var.amis["sa-east-1"]
+#     instance_type = "t2.micro"
+#     key_name = var.key_name
+#     tags = {
+#         Name = "dev4"
+#     }
+#     vpc_security_group_ids = ["sg-4774aa0f"]
+#     depends_on = [aws_s3_bucket.dev4]
+# }
 
 resource "aws_instance" "dev5" {
     ami = var.amis["sa-east-1"]
@@ -79,18 +79,18 @@ resource "aws_instance" "dev6" {
     depends_on = [aws_dynamodb_table.dynamo-db-thiago]
 }
 
-resource "aws_s3_bucket" "dev4" {
-  bucket = "cursoterraform-dev4"
+# resource "aws_s3_bucket" "dev4" {
+#   bucket = "cursoterraform-dev4"
 
-  tags = {
-    Name = "cursoterraform-dev4"
-  }
-}
+#   tags = {
+#     Name = "cursoterraform-dev4"
+#   }
+# }
 
-resource "aws_s3_bucket_acl" "dev4-acl" {
-  bucket = aws_s3_bucket.dev4.id
-  acl    = "private"
-}
+# resource "aws_s3_bucket_acl" "dev4-acl" {
+#   bucket = aws_s3_bucket.dev4.id
+#   acl    = "private"
+# }
 
 resource "aws_dynamodb_table" "dynamo-db-thiago" {
   provider = aws.us-east-1
